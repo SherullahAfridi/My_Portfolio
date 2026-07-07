@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional experience and internships in networking, front-end development, and AI.">
+    <title>Experience - Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #0066cc;
+            --accent-color: #ff6b6b;
+            --dark-bg: #0a0e27;
+            --card-bg: #151932;
+            --border-color: #1e2749;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b9d4;
+            --gradient-1: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%);
+            --gradient-2: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        header {
+            padding: 2rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Timeline Section */
+        .experience-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .section-title i {
+            font-size: 1.8rem;
+        }
+
+        /* Experience Card */
+        .experience-card {
+            background: rgba(21, 25, 50, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease-out;
+        }
+
+        .experience-card:hover::before {
+            left: 100%;
+        }
+
+        .experience-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .company-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .employment-type {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.15);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .meta-info span {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .meta-info i {
+            color: var(--primary-color);
+            width: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .card-header {
+                flex-direction: column;
+            }
+
+            .meta-info {
+                text-align: left;
+            }
+
+            .meta-info span {
+                justify-content: flex-start;
+            }
+        }
+
+        .card-description {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-description p {
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .card-description ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .card-description li {
+            color: var(--text-secondary);
+            margin-bottom: 0.6rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card-description li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .skills-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 102, 204, 0.2) 100%);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .experience-card {
+                padding: 1.5rem;
+            }
+
+            .company-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .meta-info {
+                font-size: 0.9rem;
+            }
+
+            header {
+                padding: 1.5rem 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .experience-card {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .card-header {
+                gap: 0.5rem;
+            }
+
+            .skills-list {
+                gap: 0.5rem;
+            }
+
+            .skill-tag {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1><i class="fas fa-briefcase"></i> Professional Experience</h1>
+        <p class="subtitle">Internships & Professional Roles in Networking, AI & Web Development</p>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <h2 class="section-title">
+                <i class="fas fa-network-wired"></i> Current Opportunities
+            </h2>
+
+            <!-- Card 1: Network Technician -->
+            <article class="experience-card reveal">
+                <div class="card-header">
+                    <div class="company-info">
+                        <h3>Network Technician</h3>
+                        <span class="employment-type">
+                            <i class="fas fa-graduation-cap"></i> Internship
+                        </span>
+                    </div>
+                    <div class="meta-info">
+                        <span>
+                            <i class="fas fa-building"></i>
+                            City University of Science & Information Technology (CUSIT)
+                        </span>
+                        <span>
+                            <i class="fas fa-calendar"></i>
+                            June 2026 – Present
+                        </span>
+                        <span>
+                            <i class="fas fa-map-marker-alt"></i>
+                            Khyber Pakhtunkhwa, Pakistan (On-site)
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    <ul>
+                        <li>Selected for the prestigious CUSIT Summer Internship Program (SIP) 2026</li>
+                        <li>Gaining hands-on experience in Computer Networking, IT Infrastructure, and Network Administration</li>
+                        <li>Assisting in the installation, configuration, and maintenance of routers, switches, and network devices</li>
+                        <li>Supporting troubleshooting of network connectivity and infrastructure issues</li>
+                        <li>Working with TCP/IP networking, routing, switching, VLANs, and basic network security</li>
+                        <li>Collaborating with the IT team to improve network reliability and performance</li>
+                        <li>Developing practical experience with Cisco networking technologies and enterprise networking environments</li>
+                    </ul>
+                </div>
+
+                <div class="skills-container">
+                    <div class="skills-label">
+                        <i class="fas fa-star"></i> Skills
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-tag">Computer Networking</span>
+                        <span class="skill-tag">Cisco Networking</span>
+                        <span class="skill-tag">Network Installation</span>
+                        <span class="skill-tag">Routing & Switching</span>
+                        <span class="skill-tag">TCP/IP</span>
+                        <span class="skill-tag">Network Troubleshooting</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2: Front-end AI Engineer -->
+            <article class="experience-card reveal">
+                <div class="card-header">
+                    <div class="company-info">
+                        <h3>Front-end AI Engineer</h3>
+                        <span class="employment-type">
+                            <i class="fas fa-graduation-cap"></i> Internship
+                        </span>
+                    </div>
+                    <div class="meta-info">
+                        <span>
+                            <i class="fas fa-building"></i>
+                            FlyRank AI
+                        </span>
+                        <span>
+                            <i class="fas fa-calendar"></i>
+                            July 2026 – Present
+                        </span>
+                        <span>
+                            <i class="fas fa-globe"></i>
+                            Remote
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    <ul>
+                        <li>Developing responsive and modern web interfaces using HTML, CSS, and JavaScript</li>
+                        <li>Working with AI-powered development tools to build high-quality user experiences</li>
+                        <li>Contributing to front-end components with clean, maintainable, and scalable code</li>
+                        <li>Collaborating with designers and developers to create responsive web applications</li>
+                        <li>Optimizing websites for performance, accessibility, and cross-browser compatibility</li>
+                        <li>Participating in real-world AI product development and agile workflows</li>
+                    </ul>
+                </div>
+
+                <div class="skills-container">
+                    <div class="skills-label">
+                        <i class="fas fa-star"></i> Skills
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">Front-end Development</span>
+                        <span class="skill-tag">AI-Assisted Development</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3: Agentic AI Ambassador -->
+            <article class="experience-card reveal">
+                <div class="card-header">
+                    <div class="company-info">
+                        <h3>Agentic AI Ambassador</h3>
+                        <span class="employment-type">
+                            <i class="fas fa-clock"></i> Part-time
+                        </span>
+                    </div>
+                    <div class="meta-info">
+                        <span>
+                            <i class="fas fa-building"></i>
+                            MindHYVE.ai
+                        </span>
+                        <span>
+                            <i class="fas fa-calendar"></i>
+                            June 2026 – Present
+                        </span>
+                        <span>
+                            <i class="fas fa-globe"></i>
+                            Pakistan (Remote)
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card-description">
+                    <ul>
+                        <li>Serving as an Agentic AI Ambassador to promote awareness and understanding of next-generation AI technologies</li>
+                        <li>Engaging with the AI community through educational content and knowledge sharing</li>
+                        <li>Exploring Agentic AI concepts, autonomous systems, and AI-driven innovation</li>
+                        <li>Supporting community initiatives, product awareness, and AI adoption</li>
+                        <li>Collaborating with professionals interested in Artificial Intelligence and emerging technologies</li>
+                    </ul>
+                </div>
+
+                <div class="skills-container">
+                    <div class="skills-label">
+                        <i class="fas fa-star"></i> Skills
+                    </div>
+                    <div class="skills-list">
+                        <span class="skill-tag">Artificial Intelligence</span>
+                        <span class="skill-tag">Agentic AI</span>
+                        <span class="skill-tag">AI Community Engagement</span>
+                        <span class="skill-tag">Global Product Management</span>
+                        <span class="skill-tag">Technical Communication</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Professional Portfolio. All rights reserved. | <a href="#top">Back to Top</a></p>
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth animations on page load
+        window.addEventListener('load', () => {
+            document.body.style.animation = 'fadeIn 0.6s ease-out';
+        });
+    </script>
+</body>
+</html>

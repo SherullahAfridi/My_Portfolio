@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect With Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-7fW8hVgW9pZzZDztPWh6cmt9J0hQep+ZC+IX3vO3Y6GhjUg4OAnlV7Qx4jJUKrSC2o/0o2RqV4ZyV/lW8yXjnQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-start: #0a1929;
+      --bg-end: #1a3a52;
+      --panel: rgba(26, 58, 82, 0.42);
+      --border: rgba(0, 212, 255, 0.18);
+      --divider: rgba(0, 212, 255, 0.16);
+      --text: #ffffff;
+      --muted: #b0bec5;
+      --accent: #00d4ff;
+      --button-start: rgba(0, 212, 255, 0.24);
+      --button-end: rgba(0, 255, 255, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.16), transparent 14%),
+        radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.08), transparent 12%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .social-wrapper {
+      width: min(1120px, calc(100% - 40px));
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fadeInUp 0.9s ease both;
+      position: relative;
+    }
+
+    .section-header::after {
+      content: '';
+      display: block;
+      width: 72px;
+      height: 1px;
+      margin: 24px auto 0;
+      background: rgba(0, 212, 255, 0.35);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.18);
+    }
+
+    .section-header .overline {
+      display: inline-block;
+      margin: 0 0 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .section-header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+    }
+
+    .section-header p {
+      max-width: 720px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .glass-panel {
+      position: relative;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: rgba(26, 58, 82, 0.4);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+      padding: 36px;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .glass-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 38px 100px rgba(0, 0, 0, 0.38), 0 0 40px rgba(0, 212, 255, 0.12);
+    }
+
+    .glass-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 70%);
+      mix-blend-mode: overlay;
+    }
+
+    .social-row {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+      animation: fadeInUp 0.8s ease both;
+    }
+
+    .social-row:not(:last-child) {
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .row-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .icon-badge {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      background: rgba(0, 212, 255, 0.12);
+      border: 1px solid rgba(0, 212, 255, 0.22);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      box-shadow: 0 18px 40px rgba(0, 212, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .row-left:hover .icon-badge {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 22px 46px rgba(0, 212, 255, 0.16);
+    }
+
+    .row-content {
+      min-width: 0;
+    }
+
+    .row-title {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .row-description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.75;
+      max-width: 680px;
+    }
+
+    .row-action {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 160px;
+    }
+
+    .social-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 212, 255, 0.28);
+      background: linear-gradient(135deg, var(--button-start), var(--button-end));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      box-shadow: 0 14px 28px rgba(0, 212, 255, 0.12);
+    }
+
+    .social-button:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.38), rgba(0, 255, 255, 0.22));
+      box-shadow: 0 18px 36px rgba(0, 212, 255, 0.28), 0 0 24px rgba(0, 212, 255, 0.14);
+    }
+
+    .social-button i {
+      margin-left: 10px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 860px) {
+      .social-row {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 0;
+      }
+
+      .row-action {
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .social-button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 24px;
+      }
+
+      .glass-panel {
+        padding: 28px 20px;
+      }
+
+      .section-header {
+        margin-bottom: 24px;
+      }
+
+      .section-header::after {
+        width: 56px;
+      }
+
+      .row-title {
+        font-size: 1rem;
+      }
+
+      .row-description {
+        font-size: 0.92rem;
+      }
+
+      .social-button {
+        padding: 14px 18px;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="social-wrapper">
+    <header class="section-header">
+      <p class="overline">Stay Connected</p>
+      <h1>Connect With Me</h1>
+      <p>Feel free to connect with me through my professional and social platforms.</p>
+    </header>
+
+    <section class="glass-panel">
+      <div class="social-row">
+        <div class="row-left">
+          <div class="icon-badge"><i class="fab fa-facebook-f"></i></div>
+          <div class="row-content">
+            <p class="row-title">Facebook</p>
+            <p class="row-description">Follow my latest updates, achievements and professional journey.</p>
+          </div>
+        </div>
+        <div class="row-action">
+          <a class="social-button" href="https://www.facebook.com/share/1EaR2jLUV8/?mibextid=wwXIfr/" target="_blank" rel="noreferrer noopener">Visit Facebook</a>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="row-left">
+          <div class="icon-badge"><i class="fab fa-instagram"></i></div>
+          <div class="row-content">
+            <p class="row-title">Instagram</p>
+            <p class="row-description">Follow my creative work, learning journey and daily updates.</p>
+          </div>
+        </div>
+        <div class="row-action">
+          <a class="social-button" href="https://www.instagram.com/sherullah.x" target="_blank" rel="noreferrer noopener">Visit Instagram</a>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="row-left">
+          <div class="icon-badge"><i class="fab fa-whatsapp"></i></div>
+          <div class="row-content">
+            <p class="row-title">WhatsApp</p>
+            <p class="row-description">Contact me directly for internships, projects or collaborations.</p>
+          </div>
+        </div>
+        <div class="row-action">
+          <a class="social-button" href="https://wa.me/qr/LZMZ35SGXSQDF1" target="_blank" rel="noreferrer noopener">Message Me</a>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="row-left">
+          <div class="icon-badge"><i class="fab fa-linkedin-in"></i></div>
+          <div class="row-content">
+            <p class="row-title">LinkedIn</p>
+            <p class="row-description">Connect professionally and view my experience, certifications and career growth.</p>
+          </div>
+        </div>
+        <div class="row-action">
+          <a class="social-button" href="https://www.linkedin.com/in/sher-ullah-82a3a5320" target="_blank" rel="noreferrer noopener">Connect</a>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="row-left">
+          <div class="icon-badge"><i class="fas fa-envelope"></i></div>
+          <div class="row-content">
+            <p class="row-title">Email</p>
+            <p class="row-description">Send me an email regarding internships, freelance work or opportunities.</p>
+          </div>
+        </div>
+        <div class="row-action">
+          <a class="social-button" href="mailto:ullahsher167@gmail.com?subject=Contact%20From%20Website">Send Email</a>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="row-left">
+          <div class="icon-badge"><i class="fas fa-phone"></i></div>
+          <div class="row-content">
+            <p class="row-title">Phone</p>
+            <p class="row-description">Available for professional discussions during working hours.</p>
+          </div>
+        </div>
+        <div class="row-action">
+          <a class="social-button" href="tel:+923029275917">Call Now</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
